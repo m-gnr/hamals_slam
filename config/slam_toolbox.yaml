@@ -1,0 +1,67 @@
+slam_toolbox:
+  ros__parameters:
+
+    # =================================================
+    # Mode
+    # =================================================
+    mode: online_async              # online_async | online_sync | localization
+
+    # =================================================
+    # Frames
+    # =================================================
+    map_frame: map                  # Global map frame
+    odom_frame: odom                # Odometry frame
+    base_frame: base_link            # Robot base frame
+
+    # =================================================
+    # Topics
+    # =================================================
+    scan_topic: /scan               # Laser scan topic
+
+    # =================================================
+    # Timing / Performance
+    # =================================================
+    minimum_time_interval: 0.2      # Minimum time between updates (max ~5 Hz)
+    transform_timeout: 0.2          # TF lookup timeout (seconds)
+    tf_buffer_duration: 10.0        # TF buffer cache duration (seconds)
+
+    # =================================================
+    # Odometry & Scan Matching
+    # =================================================
+    use_odometry: true              # Use odometry as a motion prior (recommended)
+    use_scan_matching: true         # Enable scan-to-scan / scan-to-map matching
+    use_scan_barycenter: true       # Use scan barycenter for improved matching
+
+    # =================================================
+    # Map Parameters
+    # =================================================
+    resolution: 0.05                # Map resolution (meters per cell)
+    max_laser_range: 12.0           # Maximum usable laser range (meters)
+    minimum_travel_distance: 0.10   # Minimum linear motion to add a new scan (meters)
+    minimum_travel_heading: 0.10    # Minimum angular motion to add a new scan (radians)
+
+    # =================================================
+    # Loop Closure
+    # =================================================
+    do_loop_closing: true                         # Enable loop closure
+    loop_search_maximum_distance: 3.0             # Maximum distance to search for loops (meters)
+    loop_match_minimum_chain_size: 10             # Minimum chain length for loop matching
+    loop_match_maximum_variance_coarse: 3.0       # Maximum allowed variance for coarse matching
+    loop_match_minimum_response_coarse: 0.35      # Minimum response score for coarse matching
+    loop_match_minimum_response_fine: 0.45        # Minimum response score for fine matching
+
+    # =================================================
+    # Ceres Solver (Optimization)
+    # =================================================
+    ceres_linear_solver: SPARSE_NORMAL_CHOLESKY   # Linear solver type
+    ceres_preconditioner: SCHUR_JACOBI            # Preconditioner type
+    ceres_trust_strategy: LEVENBERG_MARQUARDT     # Trust region strategy
+    ceres_dogleg_type: TRADITIONAL_DOGLEG         # Dogleg algorithm type
+    ceres_loss_function: None                     # Robust loss function
+
+    # =================================================
+    # Debug / Visualization
+    # =================================================
+    debug_logging: false            # Enable debug logging (false = production)
+    throttle_scans: 1               # Process every Nth scan (1 = process all scans)
+    publish_period: 1.0             # Map publish period (seconds)
