@@ -11,7 +11,7 @@ slam_toolbox:
     # =================================================
     map_frame: map                  # Global map frame
     odom_frame: odom                # Odometry frame
-    base_frame: base_link            # Robot base frame
+    base_frame: base_footprint      # Robot base frame
 
     # =================================================
     # Topics
